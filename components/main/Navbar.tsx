@@ -1,13 +1,20 @@
 'use client'
 
 
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { CircleUser, Menu, Package2, Search } from "lucide-react"
+import { CircleUser, Menu, Package2, Search, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 import ModeToggle from '../ModeToggle'
 import UserButton from '../UserButton'
 import { useRouter } from 'next/navigation'
@@ -94,6 +101,23 @@ const Navbar = () => {
                     </div>
                 </form>
                 <ModeToggle />
+                <Sheet>
+                    <SheetTrigger>
+                        <div className='flex flex-row gap-2 border px-4 py-2 h-10 rounded-full bg-primary text-primary-foreground'>
+                            <ShoppingCart className='w-5 h-5' />
+                            1
+                        </div>
+                    </SheetTrigger>
+                    <SheetContent>
+                        <SheetHeader>
+                            <SheetTitle>Are you absolutely sure?</SheetTitle>
+                            <SheetDescription>
+                                This action cannot be undone. This will permanently delete your account
+                                and remove your data from our servers.
+                            </SheetDescription>
+                        </SheetHeader>
+                    </SheetContent>
+                </Sheet>
                 <UserButton />
             </div>
         </header>

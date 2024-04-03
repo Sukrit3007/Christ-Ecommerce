@@ -2,6 +2,8 @@
 
 
 import ProductCard from '@/components/main/ProductCard';
+import * as Craft from "@/components/craft";
+
 import { supabase } from '@/supabase/client';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -39,7 +41,8 @@ const Search = () => {
         fetchProducts();
     }, []);
     return (
-        <section>
+        <Craft.Section>
+            <Craft.Container>
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <header className="text-left">
                     <h2 className="scroll-m-20 text-xl font-semibold tracking-tight lg:text-2xl">
@@ -52,7 +55,8 @@ const Search = () => {
                     ))}
                 </ul>
             </div>
-        </section>
+            </Craft.Container>
+        </Craft.Section>
     )
 }
 

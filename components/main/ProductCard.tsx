@@ -31,8 +31,8 @@ export default function ProductCard({ product }: { product: Product }) {
                     <Image
                         src={product.image}
                         alt={product.title}
-                        width={400}
-                        height={400}
+                        width={300}
+                        height={300}
                         className=" aspect-square object-contain rounded-xl overflow:hidden"
                     />
                 </CardContent>
