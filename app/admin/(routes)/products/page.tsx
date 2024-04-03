@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -44,111 +46,70 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import AddProductForm from "@/components/admin/AddProductForm"
+import { DataTable } from "./data-table"
+import { columns } from "./columns"
+import { useEffect, useState } from "react"
+import { supabase } from "@/supabase/client"
 
+interface Product {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  category: string;
+  image: string;
+}
 
 export default function Product() {
+  const [products, setProducts] = useState<any>([]);
+
+    useEffect(() => {
+        async function fetchProducts() {
+            try {
+                const { data, error } = await supabase
+                .from('product')
+                .select('*');
+
+                if (error) {
+                    throw error;
+                }
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+
+        fetchProducts();
+    }, []);
   return (
-    <main className="grid items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 md:mt-4">
-     
-      <Drawer>
-        <DrawerTrigger>
-          <div className="w-full flex justify-end">
-            <div className="flex flex-row items-center gap-1 h-8 w-fit rounded-md px-3 text-xs bg-primary text-primary-foreground shadow hover:bg-primary/90">
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Add Product
-                </span>
+      <div className="grid items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 md:mt-4">
+        <Drawer>
+          <DrawerTrigger>
+            <div className="w-full flex justify-start">
+              <div className="flex flex-row items-center gap-1 h-10 w-fit rounded-md px-3 text-md bg-primary text-primary-foreground shadow hover:bg-primary/90">
+                  <PlusCircle className="h-3.5 w-3.5" />
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    Add Product
+                  </span>
+              </div>
             </div>
-          </div>
-        </DrawerTrigger>
-        <DrawerContent>
-              <AddProductForm/>
-        </DrawerContent>
-      </Drawer>
+          </DrawerTrigger>
+          <DrawerContent>
+                <AddProductForm/>
+          </DrawerContent>
+        </Drawer>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Products</CardTitle>
-          <CardDescription>
-            Manage your products.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-
-            <TableHeader>
-              <TableRow>
-                <TableHead className="hidden w-[100px] sm:table-cell">
-                  <span className="sr-only">Image</span>
-                </TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="hidden md:table-cell">
-                  Price
-                </TableHead>
-                <TableHead className="hidden md:table-cell">
-                  Total Sales
-                </TableHead>
-                <TableHead className="hidden md:table-cell">
-                  Created at
-                </TableHead>
-                <TableHead>
-                  <span className="sr-only">Actions</span>
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-
-            <TableBody>
-              <TableRow>
-                <TableCell className="hidden sm:table-cell">
-                  <Image
-                    alt="Product image"
-                    className="aspect-square rounded-md object-cover"
-                    height="64"
-                    src="/placeholder.svg"
-                    width="64"
-                  />
-                </TableCell>
-                <TableCell className="font-medium">
-                  Laser Lemonade Machine
-                </TableCell>
-                <TableCell>
-                  <Badge variant="outline">Draft</Badge>
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  $499.99
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  25
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  2023-07-12 10:42 AM
-                </TableCell>
-                <TableCell>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        aria-haspopup="true"
-                        size="icon"
-                        variant="ghost"
-                      >
-                        <MoreHorizontal className="h-4 w-4" />
-                        <span className="sr-only">Toggle menu</span>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-
-          </Table>
-        </CardContent>
-      </Card>
-    </main>
+        <Card>
+          <CardHeader>
+            <CardTitle>Products</CardTitle>
+            <CardDescription>
+              Manage your products.
+            </CardDescription>
+          </CardHeader>
+          <CardContent >
+                <DataTable columns={columns} data={products} />
+          </CardContent>
+        </Card>
+      </div>
   );
 }

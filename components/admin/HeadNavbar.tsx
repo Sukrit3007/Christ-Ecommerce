@@ -16,8 +16,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { UserButton } from "@clerk/nextjs"
 import ModeToggle from "../ModeToggle"
+import UserButton from "../UserButton"
 
 
 const HeadNavbar = () => {
@@ -87,7 +87,7 @@ const HeadNavbar = () => {
                 />
             </div>
             <ModeToggle/>
-            <UserButton afterSignOutUrl="/"/>
+            <UserButton/>
         </header>
     )
 }
