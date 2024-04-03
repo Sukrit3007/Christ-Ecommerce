@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import { supabase } from "@/supabase/client";
 import Image from "next/image";
 
 export const columns: ColumnDef<Product>[] = [

@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ShoppingBag } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import BackButton from "@/components/main/BackButton";
 
 export default function ProductInfoPage() {
     const { id } = useParams();
@@ -51,13 +52,7 @@ export default function ProductInfoPage() {
     return (
         <Craft.Section>
             <Craft.Container>
-                <div className="mb-8 flex justify-start">
-                    <Button asChild className="w-fit" size={"sm"} variant={"outline"}>
-                        <Link href='/' >
-                            <ArrowLeft className="w-4" /> Back
-                        </Link>
-                    </Button>
-                </div>
+                <BackButton/>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                     <div className="grid col-span-1">
                         <Image

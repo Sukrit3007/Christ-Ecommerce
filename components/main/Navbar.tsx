@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 
 import { Input } from "@/components/ui/input"
-import { CircleUser, Menu, Package2, Search, ShoppingCart } from "lucide-react"
+import { Menu, Package2, Search, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
     Sheet,
@@ -15,9 +15,9 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import ModeToggle from '../ModeToggle'
 import UserButton from '../UserButton'
 import { useRouter } from 'next/navigation'
+import CartButton from '@/components/main/CartButton'
 
 
 
@@ -31,7 +31,7 @@ const Navbar = () => {
     }
 
     return (
-        <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+        <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-background/30 px-4 md:px-6 backdrop-blur-md">
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                 <Link
                     href="/"
@@ -47,10 +47,10 @@ const Navbar = () => {
                     Shop
                 </Link>
                 <Link
-                    href="#"
+                    href="/about"
                     className="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                    New Arrivals
+                    About
                 </Link>
             </nav>
             <Sheet>
@@ -79,10 +79,10 @@ const Navbar = () => {
                             Shop
                         </Link>
                         <Link
-                            href="#"
+                            href="/about"
                             className="text-muted-foreground hover:text-foreground"
                         >
-                            New Arrivals
+                           About
                         </Link>
                     </nav>
                 </SheetContent>
@@ -100,24 +100,7 @@ const Navbar = () => {
                         />
                     </div>
                 </form>
-                <ModeToggle />
-                <Sheet>
-                    <SheetTrigger>
-                        <div className='flex flex-row gap-2 border px-4 py-2 h-10 rounded-full bg-primary text-primary-foreground'>
-                            <ShoppingCart className='w-5 h-5' />
-                            1
-                        </div>
-                    </SheetTrigger>
-                    <SheetContent>
-                        <SheetHeader>
-                            <SheetTitle>Are you absolutely sure?</SheetTitle>
-                            <SheetDescription>
-                                This action cannot be undone. This will permanently delete your account
-                                and remove your data from our servers.
-                            </SheetDescription>
-                        </SheetHeader>
-                    </SheetContent>
-                </Sheet>
+                <CartButton/>
                 <UserButton />
             </div>
         </header>
