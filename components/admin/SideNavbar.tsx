@@ -65,18 +65,6 @@ const SideNavbar = () => {
                 </TooltipTrigger>
                 <TooltipContent side="right">Products</TooltipContent>
             </Tooltip>
-            <Tooltip>
-                <TooltipTrigger asChild>
-                <Link
-                    href="/admin/customers"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                >
-                    <Users2 className="h-5 w-5" />
-                    <span className="sr-only">Customers</span>
-                </Link>
-                </TooltipTrigger>
-                <TooltipContent side="right">Customers</TooltipContent>
-            </Tooltip>
           </TooltipProvider>
         </nav>
       </aside>

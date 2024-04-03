@@ -25,19 +25,15 @@ interface Product {
 
 export default function ProductCard({ product }: { product: Product }) {
     const router = useRouter();
-    const handleClick = () => {
-        router.push(`/product/${product.id}`);
-    }
     return (
-        <Link href='#'>
-            <Card>
+            <Card className="">
                 <CardContent className="mt-6">
                     <Image
                         src={product.image}
                         alt={product.title}
                         width={400}
                         height={400}
-                        className=" aspect-square object-cover rounded-xl overflow:hidden"
+                        className=" aspect-square object-contain rounded-xl overflow:hidden"
                     />
                 </CardContent>
                 <CardFooter>
@@ -54,11 +50,12 @@ export default function ProductCard({ product }: { product: Product }) {
                     </div>
                 </CardFooter>
                 <div className="w-full flex justify-between items-center mx-6 mb-6">
-                    <Button variant="expandIcon" Icon={ArrowRight} iconPlacement="right" onClick={handleClick}>
+                    <Button variant="expandIcon" Icon={ArrowRight} iconPlacement="right" >
+                        <Link href={`/products/${product.id}`}>
                             Learn More
+                        </Link>
                     </Button>
                 </div>
             </Card>
-        </Link>
     )
 }

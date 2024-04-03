@@ -29,7 +29,6 @@ const Hero = () => {
               width={1920}
               height={1080}
               alt="hero image"
-              // placeholder="blur"
             />
           </div>
         </div>
