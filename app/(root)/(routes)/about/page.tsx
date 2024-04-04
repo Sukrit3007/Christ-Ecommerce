@@ -14,7 +14,7 @@ export default function About() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="grid col-span-1">
                             <p>
-                                <span className="text-primary-500">Welcome to Christ University Merch - Your Online Destination for Exclusive University Gear!</span>
+                                <span className="text-primary-700">Welcome to Christ University Merch - Your Online Destination for Exclusive University Gear!</span>
                                 <br/><br/>
                                 At Christ University Merch, we're more than just an online store; we're a vibrant community hub celebrating the spirit and legacy of Christ University. Whether you're a current student, an alumnus, or a proud supporter of our esteemed institution, we invite you to explore our carefully curated collection of merchandise that reflects the essence of Christ University.
                                 <br/><br/>
