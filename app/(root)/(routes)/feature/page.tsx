@@ -6,7 +6,7 @@ export default function feature() {
     return (
         <Craft.Section>
             <Craft.Container>
-                <div>
+                <div className="relative"> 
                     <BackButton />
                     <div className="flex flex-col gap-4">
                         <h1 className="text-primary-500 text-2xl md:text-6xl">
