@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/sheet"
 import { useRouter } from 'next/navigation'
 import CartButton from '@/components/main/CartButton'
-import  UserButton  from "@/components/UserButton";
+import UserButton from "@/components/UserButton";
 
 
 
@@ -45,6 +45,12 @@ const Navbar = () => {
                     className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Shop
+                </Link>
+                <Link
+                    href="/feature"
+                    className="text-muted-foreground hover:text-foreground"
+                >
+                    Feature
                 </Link>
                 <Link
                     href="/about"
@@ -79,10 +85,16 @@ const Navbar = () => {
                             Shop
                         </Link>
                         <Link
+                            href="/feature"
+                            className="text-muted-foreground hover:text-foreground"
+                        >
+                            Feature
+                        </Link>
+                        <Link
                             href="/about"
                             className="text-muted-foreground hover:text-foreground"
                         >
-                           About
+                            About
                         </Link>
                     </nav>
                 </SheetContent>
@@ -100,7 +112,7 @@ const Navbar = () => {
                         />
                     </div>
                 </form>
-                <CartButton/>
+                <CartButton />
                 <UserButton />
             </div>
         </header>

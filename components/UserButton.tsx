@@ -19,41 +19,60 @@ import SignOutButton from "./auth/SignOutButton";
 export default function UserButton() {
     const [userData, setUserData] = useState<any>({});
 
-    useEffect(() => {
-        async function fetchUserData() {
-            try {
-                const { data, error } = await supabase.auth.getUser();
-                if (error) {
-                    throw error;
-                }
-                setUserData(data);
-                console.log(data);
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-            }
-        }
+    // useEffect(() => {
+    //     async function fetchUserData() {
+    //         try {
+    //             const { data, error } = await supabase.auth.getUser();
+    //             if (error) {
+    //                 throw error;
+    //             }
+    //             setUserData(data);
+    //             console.log(data);
+    //         } catch (error) {
+    //             console.error('Error fetching user data:', error);
+    //         }
+    //     }
 
-        fetchUserData();
-    }, []);
+    //     fetchUserData();
+    // }, []);
 
     return (
+        // <DropdownMenu>
+        //     <DropdownMenuTrigger asChild>
+        //         <Avatar>
+        //             {userData && userData.user && userData.user.user_metadata && userData.user.user_metadata.picture ?
+        //                 <AvatarImage src={userData.user.user_metadata.picture} /> :
+        //                 <AvatarImage src='' />
+        //             }
+        //             <AvatarFallback>{userData ? <CircleUser /> : null}</AvatarFallback>
+        //         </Avatar>
+        //     </DropdownMenuTrigger>
+        //     <DropdownMenuContent align="end">
+        //         <DropdownMenuLabel>
+        //             Hi {userData.user?.email ? userData.user.email : 'guest'}
+        //         </DropdownMenuLabel>
+        //         <DropdownMenuSeparator />
+        //         <DropdownMenuItem>
+        //             {userData.user ? <SignOutButton /> : <Link href='/signin'>SignIn</Link>}
+        //         </DropdownMenuItem>
+        //     </DropdownMenuContent>
+        // </DropdownMenu>
+
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Avatar>
-                    {userData && userData.user && userData.user.user_metadata && userData.user.user_metadata.picture ?
-                        <AvatarImage src={userData.user.user_metadata.picture} /> :
                         <AvatarImage src='' />
-                    }
-                    <AvatarFallback>{userData ? <CircleUser /> : null}</AvatarFallback>
+            
+                    <AvatarFallback><CircleUser /> </AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuLabel>
-                    Hi {userData.user?.email ? userData.user.email : 'guest'}
+                    My Account
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                    {userData.user ? <SignOutButton /> : <Link href='/signin'>SignIn</Link>}
+                    SignIn
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -31,6 +31,8 @@ const Hero = () => {
               alt="hero image"
             />
           </div>
+          <div>
+          </div>
         </div>
       </Craft.Container>
     </Craft.Section>
