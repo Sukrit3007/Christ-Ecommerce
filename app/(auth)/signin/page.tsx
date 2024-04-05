@@ -4,16 +4,8 @@ import React from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
-
-import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-} from "@/components/ui/tabs"
 import SignUpForm from "@/components/auth/SignUpForm";
-import LoginForm from "@/components/auth/LoginForm";
-import { supabase } from "@/supabase/client";
+
 
 
 export default function Dashboard() {
@@ -26,19 +18,10 @@ export default function Dashboard() {
             onMouseLeave={() => setHovered(false)}
             className="z-40 h-screen flex flex-col lg:flex-row overflow-hidden items-center justify-center w-full gap-4 mx-auto px-8 relative"
         >
-            <Tabs defaultValue="account" className="w-[400px] z-50">
-                <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="account">Login</TabsTrigger>
-                    <TabsTrigger value="password">SignUp</TabsTrigger>
-                </TabsList>
-                <TabsContent value="account">
-                    <LoginForm/>
-                </TabsContent>
-                <TabsContent value="password">
-                    <SignUpForm/>
-                </TabsContent>
-            </Tabs>
-
+            <div className="w-[400px] z-50">
+                <SignUpForm/>
+            </div>
+    
             <AnimatePresence>
                 {hovered && (
                     <motion.div

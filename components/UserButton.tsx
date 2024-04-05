@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,49 +8,54 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { useEffect, useState } from "react"
-import { useToast } from "./ui/use-toast"
-import { signIn, signOut, useSession } from 'next-auth/react'
-import { CircleUser } from 'lucide-react'
-
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CircleUser } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { supabase } from "@/supabase/client";
+import Link from "next/link";
+import SignOutButton from "./auth/SignOutButton";
 
 export default function UserButton() {
-    const { data: session } = useSession();
-    const { toast } = useToast()
-    const [userData, setUserData] = useState<any>(null);
+    const [userData, setUserData] = useState<any>({});
 
+    useEffect(() => {
+        async function fetchUserData() {
+            try {
+                const { data, error } = await supabase.auth.getUser();
+                if (error) {
+                    throw error;
+                }
+                setUserData(data);
+                console.log(data);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
 
-    const image_url = session?.user?.image ?? '';
+        fetchUserData();
+    }, []);
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Avatar>
-                    <AvatarImage src={image_url} />
-                    <AvatarFallback><CircleUser /></AvatarFallback>
+                    {userData && userData.user && userData.user.user_metadata && userData.user.user_metadata.picture ?
+                        <AvatarImage src={userData.user.user_metadata.picture} /> :
+                        <AvatarImage src='' />
+                    }
+                    <AvatarFallback>{userData ? <CircleUser /> : null}</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
-            {session ? (
-                <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Hi {session?.user?.name} </DropdownMenuLabel>
-                    <DropdownMenuItem>
-                        <Link href='/user-settings' >Settings</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={()=>signOut()}>
-                        SignOut
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            ) : (
-                <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={()=>signIn()}>
-                        Login
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            )}
-        </DropdownMenu >
-    )
+            <DropdownMenuContent align="end">
+                <DropdownMenuLabel>
+                    Hi {userData.user?.email ? userData.user.email : 'guest'}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                    {userData.user ? <SignOutButton /> : <Link href='/signin'>SignIn</Link>}
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    );
 }

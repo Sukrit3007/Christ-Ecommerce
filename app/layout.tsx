@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
-import { getServerSession } from "next-auth";
-import SessionProvider from "@/components/SessionProvider";
 
 import "./globals.css";
 
@@ -22,27 +20,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const session = await getServerSession()
 
   return (
-
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SessionProvider session={session}>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             {children}
             <Toaster />
 
-          </SessionProvider>
-        </ThemeProvider>
-      </body>
-    </html>
-
+          </ThemeProvider>
+        </body>
+      </html>
 
   );
 }
