@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 
+
 type Card = {
   id: number;
   content: JSX.Element | React.ReactNode | string;
@@ -25,9 +26,27 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
     setLastSelected(selected);
     setSelected(null);
   };
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        selected &&
+        event.target instanceof Node &&
+        !document.querySelector(".selected-card")?.contains(event.target)
+      ) {
+        setSelected(null);
+      }
+    };
+
+    document.body.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleOutsideClick);
+    };
+  }, [selected]);
 
   return (
-    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 ">
+
+    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4">
       {cards.map((card, i) => (
         <div key={i} className={cn(card.className, "")}>
           <motion.div
@@ -51,7 +70,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
       <motion.div
         onClick={handleOutsideClick}
         className={cn(
-          "absolute h-full w-full left-0 top-0 bg-black opacity-0 z-10",
+          "absolute  h-full w-full top-0 z-[60]",
           selected?.id ? "pointer-events-auto" : "pointer-events-none"
         )}
         animate={{ opacity: selected?.id ? 0.3 : 0 }}
