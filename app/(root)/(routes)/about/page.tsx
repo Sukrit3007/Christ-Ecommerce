@@ -23,13 +23,15 @@ export default function About() {
                             </p>
                         </div>
                         <div className="grid col-span-1">
-                            <Image
-                                src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535e9fc992502f35cd7902_peep-sitting-6.svg"
-                                alt="About Image"
-                                width={400}
-                                height={400}
-                                className="object-contain aspect-square"
-                            />
+                            <div className="flex items-center justify-center ">
+                                <Image
+                                    src="https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535e9fc992502f35cd7902_peep-sitting-6.svg"
+                                    alt="About Image"
+                                    width={400}
+                                    height={400}
+                                    className="object-contain aspect-square"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

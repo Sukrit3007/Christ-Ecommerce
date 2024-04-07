@@ -70,7 +70,7 @@ export default function AddProductForm() {
                 })
                 throw error;
             }
-            const imageUrl = "https://iedtizzvduepzpyokgob.supabase.co/storage/v1/object/public/images/" + `${data.path}`;
+            const imageUrl = "https://dnwyylpheqwtcxtpvedr.supabase.co/storage/v1/object/public/images/" + `${data.path}`;
 
             const { data: productData, error: productError } = await supabase
                 .from('product')
