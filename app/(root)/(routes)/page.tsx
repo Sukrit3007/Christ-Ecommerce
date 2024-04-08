@@ -7,6 +7,7 @@ import NewArrival from "@/components/main/NewArrival";
 import FeatureGrid from "@/components/main/FeatureGrid";
 import FAQ from "@/components/main/Faqs";
 import { Badge } from "@/components/ui/badge";
+import AvailableOnline from "@/components/main/AvailableOnline";
 
 
 const Hero = () => {
@@ -42,6 +43,10 @@ const Hero = () => {
           {/* NEW Arrival */}
           <div>
             <NewArrival />
+          </div>
+
+          <div>
+            <AvailableOnline/>
           </div>
           
           {/* FAQ */}

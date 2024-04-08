@@ -32,11 +32,7 @@ export default function Dashboard() {
                     >
                         <CanvasRevealEffect
                             animationSpeed={5}
-                            containerClassName="bg-transparent"
-                            colors={[
-                                [59, 130, 246],
-                                [139, 92, 246],
-                            ]}
+                            containerClassName="bg-emerald-900"
                             opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
                             dotSize={2}
                         />
