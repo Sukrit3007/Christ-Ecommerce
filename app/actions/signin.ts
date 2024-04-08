@@ -1,7 +1,7 @@
 'use server';
+
+
 import { supabase } from '@/supabase/client';
-
-
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -11,7 +11,7 @@ export const signInWithGoogle = async () =>{
     const {error, data} = await supabase.auth.signInWithOAuth({
         provider:'google',
         options: {
-            redirectTo: `${origin}`,
+            redirectTo: process.env.HOST,
         }
     })
 
@@ -20,6 +20,4 @@ export const signInWithGoogle = async () =>{
     }else{
         return redirect(data.url)
     }
-
-
 }   

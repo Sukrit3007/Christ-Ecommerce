@@ -8,6 +8,7 @@ import * as Craft from "@/components/craft";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import BackButton from "@/components/main/BackButton";
 
 interface Product {
     id: string;
@@ -39,11 +40,7 @@ export default function ProductPage() {
         <Craft.Section>
             <Craft.Container>
                 <div className="not-prose flex flex-col gap-6">
-                    <Button asChild className="w-fit" size={"sm"} variant={"outline"}>
-                        <Link href='/' >
-                            <ArrowLeft className="w-4" /> Back
-                        </Link>
-                    </Button>
+                    <BackButton/>
                     <header className="text-center">
                         <h2 className="scroll-m-20 text-primary-500  text-4xl font-semibold tracking-tight lg:text-5xl">
                             Product Collection

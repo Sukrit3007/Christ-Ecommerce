@@ -26,7 +26,8 @@ interface Product {
 export default function ProductCard({ product }: { product: Product }) {
     const router = useRouter();
     return (
-            <Card className="">
+        <Link href={`/products/${product.id}`}>
+            <Card>
                 <CardContent className="mt-6">
                     <Image
                         src={product.image}
@@ -51,11 +52,10 @@ export default function ProductCard({ product }: { product: Product }) {
                 </CardFooter>
                 <div className="w-full flex justify-between items-center mx-6 mb-6">
                     <Button variant="expandIcon" Icon={ArrowRight} iconPlacement="right" >
-                        <Link href={`/products/${product.id}`}>
                             Learn More
-                        </Link>
                     </Button>
                 </div>
             </Card>
+        </Link>
     )
 }

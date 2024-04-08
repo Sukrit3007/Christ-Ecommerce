@@ -3,6 +3,11 @@
 import { supabase } from "@/supabase/client";
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+} from "@/components/ui/card"
 
 interface Product {
     id: string;
@@ -28,7 +33,6 @@ export default function NewArrival() {
                 if (error) {
                     throw error;
                 }
-                console.log(data)
                 setProducts(data);
             } catch (error) {
                 console.error('Error fetching products:', error);

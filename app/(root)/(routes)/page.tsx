@@ -8,6 +8,7 @@ import FeatureGrid from "@/components/main/FeatureGrid";
 import FAQ from "@/components/main/Faqs";
 import { Badge } from "@/components/ui/badge";
 
+
 const Hero = () => {
   return (
     <Craft.Section>
