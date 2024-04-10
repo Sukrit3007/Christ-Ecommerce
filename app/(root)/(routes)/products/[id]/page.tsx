@@ -15,9 +15,12 @@ import { Separator } from "@/components/ui/separator";
 import BackButton from "@/components/main/BackButton";
 import NewArrival from "@/components/main/NewArrival";
 
+
 export default function ProductInfoPage() {
     const { id } = useParams();
     const [products, setProducts] = useState<any>([]);
+
+
 
     useEffect(() => {
         async function fetchProducts(id: any) {
@@ -47,8 +50,9 @@ export default function ProductInfoPage() {
                 y: 0.6
             }
         });
-    };
 
+    };
+    
     useEffect
     return (
         <Craft.Section>
