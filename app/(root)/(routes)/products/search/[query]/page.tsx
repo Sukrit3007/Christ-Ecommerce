@@ -41,7 +41,7 @@ const Search = () => {
         }
 
         fetchProducts();
-    }, []);
+    }, [query]);
     return (
         <Craft.Section>
             <Craft.Container>

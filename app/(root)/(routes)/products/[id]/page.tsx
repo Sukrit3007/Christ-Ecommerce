@@ -14,13 +14,15 @@ import { ArrowLeft, ShoppingBag } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import BackButton from "@/components/main/BackButton";
 import NewArrival from "@/components/main/NewArrival";
+import useCartStore from "@/store/cart";
+
+
 
 
 export default function ProductInfoPage() {
     const { id } = useParams();
     const [products, setProducts] = useState<any>([]);
-
-
+    const {addItemToCart} = useCartStore()
 
     useEffect(() => {
         async function fetchProducts(id: any) {
@@ -50,10 +52,9 @@ export default function ProductInfoPage() {
                 y: 0.6
             }
         });
-
+        addItemToCart(products)
     };
     
-    useEffect
     return (
         <Craft.Section>
             <Craft.Container>
