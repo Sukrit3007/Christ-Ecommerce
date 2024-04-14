@@ -15,7 +15,7 @@ export default function Success() {
         // Disable confetti after 5 seconds
         const timer = setTimeout(() => {
             setIsConfettiActive(false);
-        }, 20000);
+        }, 10000);
 
         return () => clearTimeout(timer);
     }, []);
