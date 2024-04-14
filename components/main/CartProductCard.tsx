@@ -2,33 +2,31 @@ import React from 'react'
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import { Plus, Minus } from 'lucide-react'
 import { Product } from '@/types/Product'
-import useCartStore from '@/store/cart'
+import { useAppDispatch } from '@/lib/hooks/redux'
+import { decrementQuantity, incrementQuantity, removeFromTheCart } from '@/redux/cartSlice'
+
 
 
 const CartProductCard = ({ product }: { product: Product }) => {
-    const { getProductQuantity, increaseQuantity, decreaseQuantity, removeItemFromCart } = useCartStore();
+    const dispatch = useAppDispatch();
 
-    const quantity = getProductQuantity(product.id)
+    const handleDecreaseQuantity = () => {
+        dispatch(decrementQuantity(product.id));
+    };
 
-    function handleIncreaseQuantity() {
-        increaseQuantity(product.id)
-    }
-    function handleDecreaseQuantity() {
-        decreaseQuantity(product.id)
-    }
+    const handleIncreaseQuantity = () => {
+        dispatch(incrementQuantity(product.id));
+    };
 
-    function handleRemoveButton() {
-        removeItemFromCart(product.id)
-    }
+    const handleRemoveButton = () => {
+        dispatch(removeFromTheCart(product.id));
+    };
+    
     return (
         <Card>
             <CardContent className='mt-6 flex flex-col gap-2'>
@@ -60,16 +58,15 @@ const CartProductCard = ({ product }: { product: Product }) => {
                 <div className='w-full flex flex-row items-center justify-between '>
                     <div className='flex flex-row gap-3 items-center '>
 
-                        <div onClick={handleDecreaseQuantity} className='cursor-pointer border p-2 rounded-xl'>
+                        <button onClick={handleDecreaseQuantity} className='cursor-pointer border p-2 rounded-xl'>
                             <Minus className='w-3 h-3' />
-                        </div>
-
+                        </button>
                         <span>
-                            {quantity}
+                            {product.quantity}
                         </span>
-                        <div onClick={handleIncreaseQuantity} className='cursor-pointer border p-2 rounded-xl'>
+                        <button onClick={handleIncreaseQuantity} className='cursor-pointer border p-2 rounded-xl'>
                             <Plus className='w-3 h-3' />
-                        </div>
+                        </button>
                     </div>
                     <Button variant='destructive' size='sm' onClick={handleRemoveButton}>
                         Remove

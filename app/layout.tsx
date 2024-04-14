@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 
 import "./globals.css";
+import { ReduxProvider } from "@/components/redux-provider";
 
 
 
@@ -33,8 +34,10 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ReduxProvider>
             {children}
             <Toaster />
+            </ReduxProvider>
           </ThemeProvider>
         </body>
       </html>

@@ -10,11 +10,13 @@ import { supabase } from "@/supabase/client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ShoppingBag } from "lucide-react";
+import { 
+     ShoppingBag } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import BackButton from "@/components/main/BackButton";
 import NewArrival from "@/components/main/NewArrival";
-import useCartStore from "@/store/cart";
+import { useAppDispatch } from "@/lib/hooks/redux";
+import { addToCart } from "@/redux/cartSlice";
 
 
 
@@ -22,7 +24,9 @@ import useCartStore from "@/store/cart";
 export default function ProductInfoPage() {
     const { id } = useParams();
     const [products, setProducts] = useState<any>([]);
-    const {addItemToCart} = useCartStore()
+
+    const dispatch = useAppDispatch();
+   
 
     useEffect(() => {
         async function fetchProducts(id: any) {
@@ -32,7 +36,6 @@ export default function ProductInfoPage() {
                     .select('*')
                     .eq('id', id)
                     .single();
-                console.log(data)
                 if (error) {
                     throw error;
                 }
@@ -52,7 +55,7 @@ export default function ProductInfoPage() {
                 y: 0.6
             }
         });
-        addItemToCart(products)
+        dispatch(addToCart(products))
     };
     
     return (
