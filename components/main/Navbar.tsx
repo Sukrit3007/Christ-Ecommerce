@@ -18,6 +18,7 @@ import {
 import { useRouter } from 'next/navigation'
 import CartButton from '@/components/main/CartButton'
 import UserButton from "@/components/UserButton";
+import Logo from '../Logo'
 
 
 
@@ -37,7 +38,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 text-lg font-semibold md:text-base"
                 >
-                    <Package2 className="h-6 w-6" />
+                    <Logo/>
                     <span className="sr-only">Christ Store</span>
                 </Link>
                 <Link
@@ -75,7 +76,7 @@ const Navbar = () => {
                             href="/"
                             className="flex items-center gap-2 text-lg font-semibold"
                         >
-                            <Package2 className="h-6 w-6" />
+                            <Logo/>
                             <span className="sr-only">Christ Store</span>
                         </Link>
                         <Link

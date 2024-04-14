@@ -47,11 +47,11 @@ const HeadNavbar = () => {
                             Dashboard
                         </Link>
                         <Link
-                            href="/admin/orders"
+                            href="/admin/users"
                             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                         >
-                            <ShoppingCart className="h-5 w-5" />
-                            Orders
+                            <Users2 className="h-5 w-5" />
+                            Users
                         </Link>
                         <Link
                             href="/admin/products"
