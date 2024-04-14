@@ -6,6 +6,7 @@ export async function POST(req:NextRequest, res:NextResponse){
     const body = await req.json();
     console.log(body);
     const {items, email} = body;
+    const { origin } = new URL(req.url)
   
     // stripe payment gateway
     const orangedItems = items.map((item:any)=>({
@@ -27,8 +28,8 @@ export async function POST(req:NextRequest, res:NextResponse){
         },
         line_items:orangedItems,
         mode:'payment',
-        success_url:`${process.env.HOST}/success`,
-        cancel_url:`${process.env.HOST}`,
+        success_url:`${origin}/success`,
+        cancel_url:`${origin}/`,
         metadata:{
             email,
             images: JSON.stringify(items.map((item:any)=> item.image))
