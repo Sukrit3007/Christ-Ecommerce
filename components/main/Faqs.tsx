@@ -17,24 +17,24 @@ type FAQItem = {
 
 const content: FAQItem[] = [
   {
-    question: "Lorem ipsum dolor sit amet?",
+    question: "Can I cancel my order?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "You can cancel your order before it has been shipped. Once your order has been shipped, unfortunately, it cannot be canceled. However, you can still return the item for a refund once you receive it, subject to our return policy.",
   },
   {
-    question: "Ut enim ad minim veniam?",
+    question: "Do you offer discounts for bulk orders?",
     answer:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Yes, we do offer discounts for bulk orders. Please contact with your requirements, and we will be happy to provide you with a custom quote tailored to your needs.",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit?",
+    question: "What is your return policy?",
     answer:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "We understand that sometimes things do not work out as expected. That is why we offer a hassle-free return policy. If you are not satisfied with your purchase, you can return it within 7 days for a full refund or exchange, provided the item is unused and in its original condition.",
   },
   {
-    question: "Excepteur sint occaecat cupidatat non proident?",
+    question: "How long will it take for my order to arrive?",
     answer:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Delivery times may vary depending on your location and the shipping method chosen. Typically, orders are processed within 2-3 business days and delivered within 6-7 business days thereafter. You can check the estimated delivery time during checkout.",
   },
 ];
 

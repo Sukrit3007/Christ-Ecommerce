@@ -45,7 +45,7 @@ export default function Users() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {/* <DataTable columns={columns} data={users} /> */}
+          <DataTable columns={columns} data={users} />
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">
