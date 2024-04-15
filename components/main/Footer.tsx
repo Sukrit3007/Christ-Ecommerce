@@ -1,5 +1,5 @@
 import Logo from "../Logo";
-import ModeToggle from "../ModeToggle";
+
 
 export default function Footer() {
     const date = new Date();
@@ -15,9 +15,7 @@ export default function Footer() {
             <p className="text-sm ">
                 Copyright &copy; {year}. All rights reserved.
             </p>
-            <div>
-                <ModeToggle/>
-            </div>
+            
             </div>
           </div>
         </div>

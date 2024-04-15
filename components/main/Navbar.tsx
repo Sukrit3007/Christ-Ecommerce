@@ -19,6 +19,7 @@ import { useRouter } from 'next/navigation'
 import CartButton from '@/components/main/CartButton'
 import UserButton from "@/components/UserButton";
 import Logo from '../Logo'
+import ModeToggle from '../ModeToggle'
 
 
 
@@ -113,6 +114,7 @@ const Navbar = () => {
                         />
                     </div>
                 </form>
+                <ModeToggle/>
                 <CartButton />
                 <UserButton />
             </div>
